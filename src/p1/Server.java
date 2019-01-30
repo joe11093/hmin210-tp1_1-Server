@@ -2,6 +2,7 @@ package p1;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import Interfaces.Animal;
@@ -27,7 +28,13 @@ public class Server {
 			Animal  obj = new AnimalImpl("Toad", "Joseph", cat, "Street Cat");
 			obj.getAnimalFile().setContent("voice le dossier");*/
 			
-			CabinetVeterinaire cabinet = new CabinetVeterinaireImpl();
+			//create array list to pass to the CabinetVeterinaireImpl Contructor
+			ArrayList<Animal> l = new ArrayList<Animal>();
+			l.add(new AnimalImpl("Toad", "Joseph", new Species("cat"), "Street Cat"));
+			l.add(new AnimalImpl("Courage", "Leila", new Species("dog"), "Labrador"));
+			l.add(new AnimalImpl("Luna", "Joseph", new Species("cat"), "Street Cat"));
+			
+			CabinetVeterinaire cabinet = new CabinetVeterinaireImpl(l);
 			
 			Registry registry = LocateRegistry.createRegistry(1099);
 			if(registry==null)
