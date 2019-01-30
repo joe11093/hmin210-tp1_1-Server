@@ -7,6 +7,7 @@ import java.util.List;
 
 import Interfaces.Animal;
 import Interfaces.CabinetVeterinaire;
+import Interfaces.Species;
 
 public class CabinetVeterinaireImpl extends UnicastRemoteObject implements CabinetVeterinaire {
 	
@@ -28,11 +29,21 @@ public class CabinetVeterinaireImpl extends UnicastRemoteObject implements Cabin
 	@Override
 	public Animal searchAnimal(String name) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println(name);
 		for(Animal a: this.animals){
-			if(a.getName().equals(name));
+			if(a.getName().equals(name))
 				return a;
 		}
+		
 		return null;
 	}
+
+	@Override
+	public void addAnimal(String name, String owner, String species, String race) throws RemoteException {
+		// TODO Auto-generated method stub
+		Animal a = new AnimalImpl(name, owner, new Species(species), race);
+		animals.add(a);	
+	}
+
 
 }
