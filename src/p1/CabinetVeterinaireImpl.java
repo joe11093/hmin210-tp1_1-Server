@@ -29,7 +29,7 @@ public class CabinetVeterinaireImpl extends UnicastRemoteObject implements Cabin
 	public Animal searchAnimal(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(Animal a: this.animals){
-			if(a.getName() == name)
+			if(a.getName().equals(name));
 				return a;
 		}
 		return null;
