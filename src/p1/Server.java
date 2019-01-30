@@ -5,6 +5,7 @@ import java.rmi.registry.Registry;
 import java.util.concurrent.TimeUnit;
 
 import Interfaces.Animal;
+import Interfaces.CabinetVeterinaire;
 import Interfaces.Species;
 
 public class Server {
@@ -22,21 +23,20 @@ public class Server {
 				System.setSecurityManager(new SecurityManager());
 			}
 			
-			Species cat = new Species("cat");
+			/*Species cat = new Species("cat");
 			Animal  obj = new AnimalImpl("Toad", "Joseph", cat, "Street Cat");
-			obj.getAnimalFile().setContent("voice le dossier");
+			obj.getAnimalFile().setContent("voice le dossier");*/
+			
+			CabinetVeterinaire cabinet = new CabinetVeterinaireImpl();
+			
 			Registry registry = LocateRegistry.createRegistry(1099);
 			if(registry==null)
 				System.err.println("RMI Registry not found");
 			else{
-				registry.rebind("Animal", obj);
-				System.err.println("Server is ready");
+				registry.rebind("CabinetVeterinaire", cabinet);
+				System.err.println("Server is ready\n");
 				//Testing if species is passed by copy
-				System.out.println(obj.printAnimal());
-				System.out.println("WAITING");
-				TimeUnit.SECONDS.sleep(10);
-				System.out.println("DONE WAITING");
-				System.out.println(obj.printAnimal());
+				
 			}
 			
 		}catch(Exception e){
