@@ -13,9 +13,16 @@ public class CabinetVeterinaireImpl extends UnicastRemoteObject implements Cabin
 	private static final long serialVersionUID = 1L;
 	List<Animal> animals;
 	
+	//constructor without parameters
 	protected CabinetVeterinaireImpl() throws RemoteException {
 		super();
 		this.animals = new ArrayList<Animal>();
+	}
+	
+	//constructor that takes a list as a parameter
+	protected CabinetVeterinaireImpl(List<Animal> list) throws RemoteException {
+		super();
+		this.animals = list;
 	}
 
 	@Override
