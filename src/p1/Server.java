@@ -28,6 +28,8 @@ public class Server {
 			Animal  obj = new AnimalImpl("Toad", "Joseph", cat, "Street Cat");
 			obj.getAnimalFile().setContent("voice le dossier");*/
 			
+			//set codebase
+			System.setProperty("java.rmi.server.codebase", "file:///C:/Users/josep/workspace/java/hmin210-tp1_1-Client/bin/" );
 			//create array list to pass to the CabinetVeterinaireImpl Contructor
 			ArrayList<Animal> l = new ArrayList<Animal>();
 			l.add(new AnimalImpl("Toad", "Joseph", new Species("cat"), "Street Cat"));
