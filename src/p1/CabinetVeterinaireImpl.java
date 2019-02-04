@@ -39,9 +39,9 @@ public class CabinetVeterinaireImpl extends UnicastRemoteObject implements Cabin
 	}
 
 	@Override
-	public void addAnimal(String name, String owner, String species, String race) throws RemoteException {
+	public void addAnimal(String name, String owner, Species species, String race) throws RemoteException {
 		// TODO Auto-generated method stub
-		Animal a = new AnimalImpl(name, owner, new Species(species), race);
+		Animal a = new AnimalImpl(name, owner, species, race);
 		animals.add(a);	
 	}
 
